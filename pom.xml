@@ -33,10 +33,6 @@
     <version>0.3-SNAPSHOT</version>
     <name>Cora json</name>
 
-    <properties>
-        <org.json.version>20160212</org.json.version>
-    </properties>
-
     <scm>
         <connection>scm:git:https://git.epc.ub.uu.se/epc/json.git</connection>
         <developerConnection>scm:git:https://git.epc.ub.uu.se/epc/json.git</developerConnection>
@@ -52,8 +48,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>${org.json.version}</version>
+            <version>20180813</version>
         </dependency>
     </dependencies>
-
 </project>
