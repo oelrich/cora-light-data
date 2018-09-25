@@ -33,43 +33,21 @@
     <version>0.3-SNAPSHOT</version>
     <name>Cora json</name>
 
-    <properties>
-        <org.json.version>20160212</org.json.version>
-    </properties>
-
     <scm>
         <connection>scm:git:https://git.epc.ub.uu.se/epc/json.git</connection>
         <developerConnection>scm:git:https://git.epc.ub.uu.se/epc/json.git</developerConnection>
         <url>https://git.epc.ub.uu.se/epc/json.git</url>
     </scm>
 
-    <repositories>
-        <repository>
-            <id>maven-public</id>
-            <name>LSU Nexus Repository</name>
-            <url>http://epc.ub.uu.se/nexus/repository/maven-public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <updatePolicy>daily</updatePolicy>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>${org.json.version}</version>
         </dependency>
     </dependencies>
-
 </project>
