@@ -1,60 +1,39 @@
-<!--
-  ~ Copyright 2015, 2018 Uppsala University Library
-  ~
-  ~ This file is part of Cora.
-  ~
-  ~     Cora is free software: you can redistribute it and/or modify
-  ~     it under the terms of the GNU General Public License as published by
-  ~     the Free Software Foundation, either version 3 of the License, or
-  ~     (at your option) any later version.
-  ~
-  ~     Cora is distributed in the hope that it will be useful,
-  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~     GNU General Public License for more details.
-  ~
-  ~     You should have received a copy of the GNU General Public License
-  ~     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
-  -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>se.uu.ub.cora</groupId>
-        <artifactId>cora-parent</artifactId>
-        <version>0.7-SNAPSHOT</version>
-    </parent>
-
-    <artifactId>json</artifactId>
+	<groupId>se.uu.ub.cora</groupId>
+    <artifactId>data</artifactId>
     <packaging>jar</packaging>
-    <version>0.4-SNAPSHOT</version>
-    <name>Cora json</name>
+    <version>0.1-SNAPSHOT</version>
+    <name>Light Data Engine</name>
 
     <properties>
-        <org.json.version>20180813</org.json.version>
+        <maven.compiler.source>10</maven.compiler.source>
+        <maven.compiler.target>10</maven.compiler.target>
+        <java.release.version>10</java.release.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <scm>
-        <connection>scm:git:https://github.com/lsu-ub-uu/json.git</connection>
-        <developerConnection>scm:git:https://github.com/lsu-ub-uu/json.git</developerConnection>
-        <url>https://github.com/lsu-ub-uu/json.git</url>
+        <connection>scm:git:https://github.com/oelrich/cora-light-data.git</connection>
+        <developerConnection>scm:git:https://github.com/oelrich/cora-light-data.git</developerConnection>
+        <url>https://github.com/oelrich/cora-light-data.git</url>
     </scm>
 
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
+            <version>6.14.3</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>${org.json.version}</version>
+            <version>20180813</version>
         </dependency>
     </dependencies>
-
 </project>

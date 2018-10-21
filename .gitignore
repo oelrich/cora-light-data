@@ -1,9 +1,10 @@
-/bin/
-/target/
-/test-output/
-/.settings/
-/.classpath
-/.project
+bin
+target
+test-output
+.settings
+.classpath
+.project
 .idea
 *.iml
 *.iws
+*.json
