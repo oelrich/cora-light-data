@@ -13,10 +13,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class LightDataEngineLoadTest {
-
-    private static final String RECORD_LIST_COLLECTION = "recordList";
-    private static final String COLLECTED_DATA_COLLECTION = "collectedData";
-    private static final String LINK_LISTS_COLLECTION = "linkLists";
     private static final String CHILDREN = "children";
     private static final String NAME = "name";
     private Map<String, Map<String, Map<String, Set<JSONObject>>>> collections;
@@ -30,6 +26,13 @@ public class LightDataEngineLoadTest {
     }
 
     @Test
+    void examineLoadTime() {
+        loadLightData();
+        assertEquals(collections.size(), 7);
+        assertEquals(lightCollections.size(), 7);
+    }
+
+    @Test
     void examineCollections() {
         assertEquals(collections.size(), 7);
     }
@@ -38,9 +41,6 @@ public class LightDataEngineLoadTest {
     void examineCollectionsAgain() {
         assertTrue(collections.containsKey("cora"));
     }
-
-
-
 
     private void loadJsonCollections() {
         collections = new HashMap<>();
@@ -101,15 +101,15 @@ public class LightDataEngineLoadTest {
 
     private Map<String, Map<String, Set<JSONObject>>> loadSubCollections(List<String> files) {
         var fileCollections = new HashMap<String, Map<String, Set<JSONObject>>>();
-        files.stream().forEach(file -> addFileCollection(file, fileCollections));
+        files.forEach(file -> addFileCollection(file, fileCollections));
         return fileCollections;
     }
 
     private void addFileCollection(String file, Map<String, Map<String, Set<JSONObject>>> fileCollections) {
         var fileJson = readJsonResource(file);
 
-        var collectionName = fileJson.getString(NAME);
-        Map<String, Set<JSONObject>> recordTypeCollection = null;
+        var collectionName = Objects.requireNonNull(fileJson).getString(NAME);
+        Map<String, Set<JSONObject>> recordTypeCollection;
         if(fileCollections.containsKey(collectionName)) {
             recordTypeCollection = fileCollections.get(collectionName);
         } else {

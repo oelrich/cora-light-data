@@ -2,7 +2,7 @@ package se.uu.ub.cora.data.light;
 
 import java.util.Map;
 
-public abstract class LightData {
+abstract class LightData {
     int name;
     int repeatId;
     Map<Integer, Integer> attributes;

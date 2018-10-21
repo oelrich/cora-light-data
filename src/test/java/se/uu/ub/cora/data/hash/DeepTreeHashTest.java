@@ -27,12 +27,12 @@ public class DeepTreeHashTest {
             var inputStream = new InputStreamReader(file);
             var reader = new BufferedReader(inputStream)) {
             linkListsCoraJson = new JSONObject(reader.lines().collect(Collectors.joining()));
-        } catch(Exception e) {}
+        } catch(Exception ignored) {}
         names = getPropertyList(linkListsCoraJson, "name");
         values = getPropertyList(linkListsCoraJson, "value");
     }
 
-    List<String> getPropertyList(JSONObject jsonObject, String property) {
+    private List<String> getPropertyList(JSONObject jsonObject, String property) {
         Set<String> properties = new HashSet<>();
         if(jsonObject.has(property)) {
             properties.add(jsonObject.getString(property));
@@ -92,28 +92,28 @@ public class DeepTreeHashTest {
     }
 
     @Test(expectedExceptions = NullPointerException.class)
-    void testNullThrows() throws DeepTreeHashException {
+    void testNullThrows() {
         var dth =  new DeepTreeHash();
         long hash = dth.hash(null);
         assertEquals(hash, 0);
     }
 
     @Test
-    void testHashSingleCharacter() throws DeepTreeHashException {
+    void testHashSingleCharacter() {
         var dth =  new DeepTreeHash();
         var hash = dth.hash("w");
         assertEquals(hash, 1);
     }
 
     @Test
-    void testHashTwoSingleCharacter() throws DeepTreeHashException {
+    void testHashTwoSingleCharacter() {
         var dth =  new DeepTreeHash();
         assertEquals(dth.hash("w"), 1);
         assertEquals(dth.hash("o"), 2);
     }
 
     @Test
-    void testHashTwoSingleCharacterAndTheFirstShouldStayTheSame() throws DeepTreeHashException {
+    void testHashTwoSingleCharacterAndTheFirstShouldStayTheSame() {
         var dth =  new DeepTreeHash();
         assertEquals(dth.hash("w"), 1);
         assertEquals(dth.hash("o"), 2);
