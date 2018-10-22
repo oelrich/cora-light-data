@@ -61,4 +61,39 @@ public class LightDataTest {
         assertNull(lightData.children);
     }
 
+    @Test
+    void testInitGroupNameAttributes() {
+        LightGroup lightData = new LightGroup(1, Map.of(1,2));
+        assertEquals(lightData.name, 1);
+        assertEquals(lightData.repeatId, 0);
+        assertEquals((int) lightData.attributes.get(1), 2);
+        assertNull(lightData.children);
+    }
+
+    @Test
+    void testInitGroupNameChildren() {
+        LightGroup lightData = new LightGroup(1, new LightData[1]);
+        assertEquals(lightData.name, 1);
+        assertEquals(lightData.repeatId, 0);
+        assertTrue(lightData.attributes.isEmpty());
+        assertNotNull(lightData.children);
+    }
+
+    @Test
+    void testInitGroupNameAttributesChildren() {
+        LightGroup lightData = new LightGroup(1, Map.of(1,2), new LightData[1]);
+        assertEquals(lightData.name, 1);
+        assertEquals(lightData.repeatId, 0);
+        assertEquals((int) lightData.attributes.get(1), 2);
+        assertNotNull(lightData.children);
+    }
+
+    @Test
+    void testInitGroupNameRepeatIdChildren() {
+        LightGroup lightData = new LightGroup(1,1, new LightData[1]);
+        assertEquals(lightData.name, 1);
+        assertEquals(lightData.repeatId, 1);
+        assertTrue(lightData.attributes.isEmpty());
+        assertNotNull(lightData.children);
+    }
 }

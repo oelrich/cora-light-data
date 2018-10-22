@@ -8,6 +8,7 @@ public class DeepTreeHash {
     private Map<String, Integer> cache;
     private int maxHash = 0;
     private Map<Character, DeeperTreeHash> hashes;
+
     public DeepTreeHash() {
         hashes = new HashMap<>();
         cache = new HashMap<>();
