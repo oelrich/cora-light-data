@@ -5,11 +5,10 @@ import org.json.JSONObject;
 
 import se.uu.ub.cora.data.hash.DeepTreeHash;
 
-import java.util.HashMap;
+import java.util.*;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
 public class LightDataEngine {
     private static final String REPEAT_ID = "repeatId";
@@ -35,6 +34,7 @@ public class LightDataEngine {
         var children = getChildren(group.getJSONArray(CHILDREN));
         return new LightGroup(nameValue, repeatIdValue, attributes, children);
     }
+
     private LightData loadData(JSONObject json) {
         if(json.has(CHILDREN)) {
             return loadGroup(json);
@@ -81,6 +81,9 @@ public class LightDataEngine {
             if(collections.containsKey(lightGroup.name))
             {
                 var typeGroup = collections.get(lightGroup.name);
+//                if(!typeGroup.contains(lightGroup)) {
+//                    typeGroup.add(lightGroup);
+//                }
                 typeGroup.add(lightGroup);
                 collections.put(lightGroup.name, typeGroup);
             } else {
@@ -112,5 +115,22 @@ public class LightDataEngine {
 
     public int otherHash(String value) {
         return otherHash.hash(value);
+    }
+
+    private Stream<String> printRecord(LightData ld) {
+        return null;
+    }
+
+    private Stream<String> printRecord(LightGroup lg) {
+        var preamble = nameHash.string(lg.name);
+        return Arrays.stream(lg.children).flatMap(this::printRecord).map(entry -> preamble + "/" + entry);
+    }
+
+    private Stream<String> printType(Set<LightGroup> recordsOfType) {
+        return recordsOfType.stream().flatMap(this::printRecord);
+    }
+
+    public Stream<String> print() {
+        return collections.values().stream().flatMap(this::printType);
     }
 }

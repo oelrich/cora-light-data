@@ -129,7 +129,5 @@ public class LightDataEngineTest {
 		var lde = new LightDataEngine();
 		var first = atomic("should", "beNull").build();
 		assertNull(lde.load(first));
-
 	}
-
 }
